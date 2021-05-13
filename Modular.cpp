@@ -1,20 +1,25 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
+typedef unsigned long long ll;
+
 int main() {
-    int t;
-    cin>>t;
-    while(t--){
-        int n,m;
-        cin>>n>>m;
-        int a,b,c=0;
-        for(int i=1;i<=n;i++){
-            for(int j=i+1;j<=n;j++){
-                a = ((m % i) % j);
-                b = ((m % j) % i);
-                if(a==b)
-                    c++;
-            }
-        }
-        cout<<c<<endl;
-    }
+	// your code goes here
+	ll t;
+	cin>>t;
+	while(t--){
+	    ll n,m;
+	    cin>>n>>m;
+	    ll count=0;
+	    vector <ll> arr(n+1,1);
+	    
+	    for(ll i=2;i<=n;i++){
+	        ll a = m % i;
+	        count+=arr[a];
+	        for(ll j=a;j<=n;j+=i)
+	            arr[j]++;
+	    }
+	    cout<<count<<endl;
+	}
+	return 0;
 }
+
